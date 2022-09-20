@@ -1,56 +1,57 @@
 import math
 
-def func(x):
-    return ((2*math.sin(x)-math.exp(x))/4)-1
+def f(x):
+    return 2*math.sin(x)-(math.exp(x)/4)-1
 
+#equation = input('Please input an equation you would like to find the roots of?')
 tol = 0.000001
-def FalsePosition(x0, x1, tol, error_type):
+def FalsePosition(x1, x2, tol, f, flag):
 
-    if func(x0)*func(x1)>0:
+    if f(x1)*f(x2)>0:
         print('Invalid Brackets')
  
     iter = 0; error = 100
 
     while error >= tol:
-        x = x1
-        x2 = x1-func(x1)*((x0-x1)/(func(x0)-func(x1)))
+        x = x2
+        x3 = x2-f(x2)*((x1-x2)/(f(x1)-f(x2)))
         iter += 1
 
-        if func(x2) == 0:
-            print('The root is: ', x2)
+        if f(x3) == 0:
+            print('The root is: ', x3)
             print('Iterations: ', iter)
             break
-        elif func(x0)*func(x2)<0:
-            x1 = x2
+        elif f(x1)*f(x3)<0:
+            x2 = x3
         else:
-            x0 = x2
+            x1 = x3
 
-        if error_type == 1:
-            error = abs(x0 - x2)
-        elif error_type == 2:
-            error = abs((x - x2) / x2)
-        elif error_type == 3:
-            error = abs(func(x2))
+        if flag == 1:
+            error = abs(x1 - x3)
+        elif flag == 2:
+            error = abs((x - x3) / x3)
+        elif flag == 3:
+            error = abs(f(x3))
 
-    print('Root is : %f' % x2)
+    print('Root is : %f' % x3)
     print('Iteration: %f' % iter )
     print('Error: ', error)
 
 #Itervals for question 2
-x0 = -7; x1 = -5
+x1 = -7; x2 = 5
 y1 = -5; y2 = -3
 
 print('\nAbsolute Approximate Error: ')
-FalsePosition(x0, x1, tol, 1)
-FalsePosition(y1, y2, tol, 1)
+FalsePosition(x1, x2, tol, f, 1)
+FalsePosition(y1, y2, tol, f, 1)
 print('\n')
 
 print('Absolute Relative Approximate Error: ')
-FalsePosition(x0, x1, tol, 2)
-FalsePosition(y1, y2, tol, 2)
+FalsePosition(x1, x2, tol, f, 2)
+FalsePosition(y1, y2, tol, f, 2)
 print('\n')
 
 print('True Absolute Error:')
-FalsePosition(x0, x1, tol, 3)
-FalsePosition(y1, y2, tol, 3)
+FalsePosition(x1, x2, tol, f, 3)
+FalsePosition(y1, y2, tol, f, 3)
 print('\n')
