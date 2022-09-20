@@ -1,7 +1,7 @@
 import math
 
 def func(x):
-    return ((2*math.sin(x)-math.exp(x))/4)-1
+    return 2*math.sin(x)-(math.exp(x)/4)-1
 
 tol = 0.000001
 def bisection(x1, x2, tol, error_type):
