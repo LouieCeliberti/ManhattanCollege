@@ -3,7 +3,6 @@ import math
 def f(x):
     return 2*math.sin(x)-(math.exp(x)/4)-1
 
-#equation = input('Please input an equation you would like to find the roots of?')
 tol = 0.000001
 def FalsePosition(x1, x2, tol, f, flag):
 
@@ -27,7 +26,7 @@ def FalsePosition(x1, x2, tol, f, flag):
             x1 = x3
 
         if flag == 1:
-            error = abs(x1 - x3)
+            error = abs(x - x3)
         elif flag == 2:
             error = abs((x - x3) / x3)
         elif flag == 3:
@@ -38,7 +37,7 @@ def FalsePosition(x1, x2, tol, f, flag):
     print('Error: ', error)
 
 #Itervals for question 2
-x1 = -7; x2 = 5
+x1 = -7; x2 = -5
 y1 = -5; y2 = -3
 
 print('\nAbsolute Approximate Error: ')
