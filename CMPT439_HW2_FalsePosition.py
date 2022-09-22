@@ -38,7 +38,7 @@ def FalsePosition(x1, x2, tol, f, flag):
 
 #Itervals for question 2
 x1 = -7; x2 = -5
-y1 = -5; y2 = -3
+y1 = -4; y2 = -2
 
 print('\nAbsolute Approximate Error: ')
 FalsePosition(x1, x2, tol, f, 1)
