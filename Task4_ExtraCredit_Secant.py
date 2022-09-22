@@ -37,21 +37,17 @@ def Secant(x1, x2, tol, f, flag):
     print('Error: ', error)
 
 # Brackets
-x1 = -4; x2 = 0
-y1 = 1; y2 = 4
+x1 = -4; x2 = -1
 
 
 print('\nAbsolute Approximate Error: ')
 Secant(x1, x2, tol, f, 1)
-Secant(y1, y2, tol, f, 1)
 print('\n')
 
 print('\nAbsolute Relative Approximate Error: ')
 Secant(x1, x2, tol, f, 2)
-Secant(y1, y2, tol, f, 2)
 print('\n')
 
 print('True Absolute Error:')
 Secant(x1, x2, tol, f, 3)
-Secant(y1, y2, tol, f, 3)
 print('\n')
