@@ -36,26 +36,16 @@ def bisection(x1, x2, tol, f, flag):
     print('Error: ', error)
 
 # Brackets
-x1 = -4; x2 = 0
-y1 = 1; y2 = 4
-
-"""print('Approximate Error iteration prediction: ')
-pred_1 = float(math.log2(abs(x1 - x2) / tol))
-print('1st brackets iteration prediction: %f' % pred_1)
-pred_2 = float(math.log2(abs(y1 - y2) / tol))
-print('2nd brackets iteration prediction: %f' % pred_2)"""
+x1 = -4; x2 = -1
 
 print('\nAbsolute Approximate Error: ')
 bisection(x1, x2, tol, f, 1)
-bisection(y1, y2, tol, f, 1)
 print('\n')
 
 print('Absolute Relative Approximate Error: ')
 bisection(x1, x2, tol, f, 2)
-bisection(y1, y2, tol, f, 2)
 print('\n')
 
 print('True Absolute Error:')
 bisection(x1, x2, tol, f, 3)
-bisection(y1, y2, tol, f, 3)
 print('\n')
