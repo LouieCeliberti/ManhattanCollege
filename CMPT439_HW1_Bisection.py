@@ -1,36 +1,35 @@
 import math
 
-def f(x):
+def func(x):
     return 2*math.sin(x)-(math.exp(x)/4)-1
 
 tol = 0.000001
-def FalsePosition(x1, x2, tol, f, flag):
+def bisection(x1, x2, tol, error_type):
 
-    if f(x1)*f(x2)>0:
-        print('Invalid Brackets')
- 
+    if func(x1) * func(x2) > 0.0:
+        print("invalid brackets")
+
     iter = 0; error = 100
 
     while error >= tol:
-        x = x2
-        x3 = x2-f(x2)*((x1-x2)/(f(x1)-f(x2)))
+        x3 = (x1 + x2) / 2
         iter += 1
 
-        if f(x3) == 0:
-            print('The root is: ', x3)
-            print('Iterations: ', iter)
+        if func(x3) == 0:
             break
-        elif f(x1)*f(x3)<0:
+        elif func(x1) * func(x3) < 0:
             x2 = x3
+            x4 = x1
         else:
             x1 = x3
+            x4 = x2
 
-        if flag == 1:
-            error = abs(x - x3)
-        elif flag == 2:
-            error = abs((x - x3) / x3)
-        elif flag == 3:
-            error = abs(f(x3))
+        if error_type == 1:
+            error = abs(x4 - x3)
+        elif error_type == 2:
+            error = abs((x4 - x3) / x3)
+        elif error_type == 3:
+            error = abs(func(x3))
 
     print('Root is : %f' % x3)
     print('Iteration: %f' % iter )
@@ -38,19 +37,25 @@ def FalsePosition(x1, x2, tol, f, flag):
 
 #Itervals for question 2
 x1 = -7; x2 = -5
-y1 = -4; y2 = -2
+y1 = -5; y2 = -3
+
+print('Approximate Error iteration prediction: ')
+pred_1 = float(math.log2(abs(x1 - x2) / tol))
+print('1st brackets iteration prediction: %f' % pred_1)
+pred_2 = float(math.log2(abs(y1 - y2) / tol))
+print('2nd brackets iteration prediction: %f' % pred_2)
 
 print('\nAbsolute Approximate Error: ')
-FalsePosition(x1, x2, tol, f, 1)
-FalsePosition(y1, y2, tol, f, 1)
+bisection(x1, x2, tol, 1)
+bisection(y1, y2, tol, 1)
 print('\n')
 
 print('Absolute Relative Approximate Error: ')
-FalsePosition(x1, x2, tol, f, 2)
-FalsePosition(y1, y2, tol, f, 2)
+bisection(x1, x2, tol, 2)
+bisection(y1, y2, tol, 2)
 print('\n')
 
 print('True Absolute Error:')
-FalsePosition(x1, x2, tol, f, 3)
-FalsePosition(y1, y2, tol, f, 3)
+bisection(x1, x2, tol, 3)
+bisection(y1, y2, tol, 3)
 print('\n')
